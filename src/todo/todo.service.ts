@@ -2,16 +2,30 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class TodoService {
-getReq(): string {
-    return 'you have get request';
+getId(str): string {
+    return 'get request ' + str;
   }
-postReq(): string {
-    return 'you have posted request';
+
+  getAll(): string {
+    return 'get meth with no params';
   }
-putReq(): string {
-    return 'you have put request';
+
+  create(item): string {
+    console.log(item);
+    return item;
   }
-deleteReq(): string {
-    return 'you have deleted request';
+
+  update(item): string {
+    console.log(item);
+    return item;
   }
+
+  deleteAll(): string {
+    return 'delete with no params';
+  }
+
+  delete(id): string {
+    return 'id ' + id + 'deleted';
+  }
+
 }
