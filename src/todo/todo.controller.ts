@@ -9,24 +9,39 @@ import {
   Put,
 } from '@nestjs/common';
 
-@Controller()
+@Controller('todo')
 export class TodoController {
   constructor(private readonly todoService: TodoService) {}
 
-  @Get()
-  getReq(): string {
-    return this.todoService.getReq();
+ @Get()
+  getAll() {
+    return this.todoService.getAll();
   }
+
+  @Get(':id')
+  getId(@Param('id') id: number) {
+    return this.todoService.getId(id);
+  }
+
   @Post()
-    postReq(): string {
-      return this.todoService.postReq();
-    }
+  create(@Body() task: string): string {
+    return this.todoService.create(task);
+  }
+
   @Put()
-    putReq(): string {
-      return this.todoService.putReq();
-    }
+  update(@Body() task: string,): string {
+    return this.todoService.update(task);
+  }
+
   @Delete()
-    deleteReq(): string {
-      return this.todoService.deleteReq();
-    }
+  deleteAll(): string {
+    return this.todoService.deleteAll();
+  }
+
+  @Delete(':id')
+  deleteMeth(@Param('id') id: number) {
+    return this.todoService.delete(id);
+  }
+
+
 }
